@@ -64441,6 +64441,11 @@ const prepareInput = () => {
             : hasPermission("metadata-ro")
                 ? "read"
                 : undefined,
+        repository_projects: hasPermission("repository-projects-rw")
+            ? "write"
+            : hasPermission("repository-project-ro")
+                ? "read"
+                : undefined,
     };
     return {
         appId,

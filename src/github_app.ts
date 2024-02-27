@@ -18,6 +18,7 @@ type Permission = {
     issues: "read" | "write" | undefined;
     packages: "read" | "write" | undefined;
     metadata: "read" | "write" | undefined;
+    repository_projects: "read" | "write" | undefined;
 };
 type Input = {
     appId: string;
@@ -71,7 +72,11 @@ export const prepareInput = (): Input => {
             : hasPermission("metadata-ro")
             ? "read"
             : undefined,
-            
+        repository_projects: hasPermission("repository-projects-rw")
+            ? "write"
+            : hasPermission("repository-project-ro")
+            ? "read"
+            : undefined,
     };
 
     return {
