@@ -17,6 +17,7 @@ type Permission = {
     pull_requests: "write" | undefined;
     issues: "read" | "write" | undefined;
     packages: "read" | "write" | undefined;
+    metadata: "read" | "write" | undefined;
 };
 type Input = {
     appId: string;
@@ -64,7 +65,13 @@ export const prepareInput = (): Input => {
             ? "write"
             : hasPermission("packages-ro")
             ? "read"
-            : undefined
+            : undefined,
+        metadata: hasPermission("metadata-rw")
+            ? "write"
+            : hasPermission("metadata-ro")
+            ? "read"
+            : undefined,
+            
     };
 
     return {

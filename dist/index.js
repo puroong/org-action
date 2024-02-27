@@ -64435,7 +64435,12 @@ const prepareInput = () => {
             ? "write"
             : hasPermission("packages-ro")
                 ? "read"
-                : undefined
+                : undefined,
+        metadata: hasPermission("metadata-rw")
+            ? "write"
+            : hasPermission("metadata-ro")
+                ? "read"
+                : undefined,
     };
     return {
         appId,
