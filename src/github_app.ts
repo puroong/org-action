@@ -121,5 +121,6 @@ export const installationToken = async (input: Input) => {
         permissions: input.permission,
         type: "installation"
     } as InstallationAuthOptions);
+    console.log(installation);
     return installation.token;
 };
